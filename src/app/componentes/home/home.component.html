@@ -1,0 +1,30 @@
+<h1 class="h1-strong">List products </h1>
+<div class="col-sm-12 ">
+    <div class="row">
+        <div class="col-sm-4 mt-4" *ngFor="let product of products">
+            <div class="card">
+                <div class="image-product">
+                    <img src="{{product.imagePath}}" class="card-img-top" alt="...">
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{product.title}}</h5>
+                    
+                    <p class="card-text">{{ (product.description.length>100)? (product.description | slice:0:100)+'...':(product.description) }}</p>
+
+                    <div class="row">
+                            <h4 class="col-sm-6">${{product.price}}</h4>
+                            <div class="d-flex justify-content-end col-sm-6">
+                                <a (click)="addToCart(product._id)" style="cursor: pointer;" class="btn btn-dark btn-sm text-white">add</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="pagination">
+        <li *ngIf="page > 1"><a [routerLink]="['/home', prev_page]">Anterior</a></li>
+        <li *ngIf="pages != page"><a [routerLink]="['/home', next_page]">Siguiente</a></li>
+    </ul>
+</div>

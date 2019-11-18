@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Tienda Virtual</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/my-cart']">
+                    Carrito 
+                    <span class="badge badge-dark" *ngIf="cart">{{cart.length}}</span>
+                </a>
+                
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" *ngIf="identity">
+                    Bienvenido: {{identity.name}} {{identity.surname}}
+                </a>
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" *ngIf="!identity">
+                    Identificarme
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" *ngIf="identity" [routerLink]="['/my-orders']">Profile</a>
+                    <a class="dropdown-item" [routerLink]="['/register']" *ngIf="!identity">Sing In</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/login']" *ngIf="!identity">Login</a>
+                    <a class="dropdown-item" style="cursor: pointer;"  (click)="logout()" *ngIf="identity">Logout</a>
+                </div> 
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,23 @@
+<div class="col-lg-5">
+    <h1 class="h1-strong">Checkout</h1>
+
+    <h4>
+        Your Total: $ 
+    </h4>
+    <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+
+        <div class=" form-group">
+            <p>
+                <label for="">Name</label>
+                <input class="form-control" type="text" formControlName="name" placeholder="Jane Doe">
+            </p>
+        </div>
+
+
+
+        <div id="card-element" class="field"></div>
+        <button type="submit" class="btn btn-success">
+            BUY
+        </button>
+    </form>
+</div>
