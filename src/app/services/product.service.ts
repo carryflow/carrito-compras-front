@@ -19,4 +19,9 @@ export class ProductService {
     return this._http.get(this.url+'products/'+page, {headers: headers});
   }
 
+  getProduct(id): Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'product/'+id,{headers: headers});
+  }
+
 }

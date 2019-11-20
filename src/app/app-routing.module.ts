@@ -6,6 +6,7 @@ import { RegisterComponent } from './componentes/register/register.component';
 import { MyCartComponent } from './componentes/my-cart/my-cart.component';
 import { CheckoutComponent } from './componentes/checkout/checkout.component';
 import { MyOrdersComponent } from './componentes/my-orders/my-orders.component';
+import { ProductDetailComponent } from './componentes/product-detail/product-detail.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'my-cart', component: MyCartComponent },
   { path: 'checkout/:checkout', component: CheckoutComponent },
   { path: 'my-orders', component: MyOrdersComponent },
+  { path: 'product-detail/:id', component: ProductDetailComponent },
 
 ];
 

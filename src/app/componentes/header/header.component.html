@@ -8,33 +8,33 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
-                <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" [routerLink]="['/home']"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
             </li>
         </ul>
 
         <ul class="navbar-nav navbar-right">
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/my-cart']">
-                    Carrito 
-                    <span class="badge badge-dark" *ngIf="cart">{{cart.length}}</span>
+                    <i class="fas fa-cart-plus"></i> Shopping cart 
+                    <span class="badge badge-warning" *ngIf="cart">{{cart.length}}</span>
                 </a>
                 
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" *ngIf="identity">
-                    Bienvenido: {{identity.name}} {{identity.surname}}
+                    <i class="fas fa-user"></i> {{identity.name+' '+identity.surname}} 
                 </a>
                 <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" *ngIf="!identity">
-                    Identificarme
+                    <i class="fas fa-user"></i>  Hello, identify
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" *ngIf="identity" [routerLink]="['/my-orders']">Profile</a>
-                    <a class="dropdown-item" [routerLink]="['/register']" *ngIf="!identity">Sing In</a>
+                    <a class="dropdown-item" *ngIf="identity" [routerLink]="['/my-orders']"><i class="fas fa-list"></i> My orders</a>
+                    <a class="dropdown-item" [routerLink]="['/register']" *ngIf="!identity"><i class="fas fa-user-plus"></i> Sing In</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/login']" *ngIf="!identity">Login</a>
-                    <a class="dropdown-item" style="cursor: pointer;"  (click)="logout()" *ngIf="identity">Logout</a>
+                    <a class="dropdown-item" [routerLink]="['/login']" *ngIf="!identity"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a class="dropdown-item" style="cursor: pointer;"  (click)="logout()" *ngIf="identity"> <i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div> 
             </li>
         </ul>

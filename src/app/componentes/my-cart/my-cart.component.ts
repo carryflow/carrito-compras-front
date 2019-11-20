@@ -5,7 +5,7 @@ import { CartService } from '../../services/cart.service';
 import { Cart } from '../../models/cart';
 import { OrderService } from '../../services/order.service';
 import { Order } from '../../models/order';
-import { registerLocaleData } from '@angular/common';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -19,7 +19,7 @@ export class MyCartComponent implements OnInit {
   public total:number;
   public order: Order;
   constructor(private _carService: CartService, private _userService: UserService, private _orderService: OrderService,  private _route: ActivatedRoute, private _router: Router) {
-    this.order = new Order(null, [], '', '');
+    this.order = new Order(null, [], '', '','',null);
   }
 
   ngOnInit() {
@@ -46,9 +46,9 @@ export class MyCartComponent implements OnInit {
       token: (token: any)=>{
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
-        console.log(token.id)
-        alert('Token Created!!');
-        this.register(token)
+        this.register(token);
+        this.carts = [];
+        sessionStorage.clear();
       }
     });
 
@@ -64,15 +64,26 @@ export class MyCartComponent implements OnInit {
   }
 
   register(token) {
-    console.log('toeknnnnn'+token.id);
+    //console.log(this._carService.getItemsCart());
+    let total:any = null;
+    total = this.carts.map((item:Cart) =>{
+      return total += item.product.price * item.qty
+    });
     this.order.user = this._userService.getIdentity();
     this.order.carts = this._carService.getItemsCart();
     this.order.email = token.email;
     this.order.paymentId = token.id;
-    console.log("id"+ this.order.paymentId);
+    this.order.total = total[total.length - 1];
+
+    
     this._orderService.register(this.order).subscribe(
       response => {
-        console.log("desde aqui" + response)
+        this._router.navigate(['/']);
+        Swal.fire(
+          'Good job!',
+          `Your order has been successfully made`,
+          'success'
+        );
       },
       error => {
         console.log(error);

@@ -15,6 +15,7 @@ import { RegisterComponent } from './componentes/register/register.component';
 import { MyCartComponent } from './componentes/my-cart/my-cart.component';
 import { CheckoutComponent } from './componentes/checkout/checkout.component';
 import { MyOrdersComponent } from './componentes/my-orders/my-orders.component';
+import { ProductDetailComponent } from './componentes/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MyOrdersComponent } from './componentes/my-orders/my-orders.component';
     RegisterComponent,
     MyCartComponent,
     CheckoutComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

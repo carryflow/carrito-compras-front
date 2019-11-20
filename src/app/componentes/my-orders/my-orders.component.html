@@ -1,10 +1,10 @@
 <h1 class="h1-strong">My orders</h1>
-<div class="accordion mt-5" id="accordionExample">
+<div *ngIf="orders" class="accordion mt-5" id="accordionExample">
     <div *ngFor="let order of orders" class="card">
       <div class="card-header" id="headingOne">
         <h2 class="mb-0">
           <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Mis compras : {{order.paymentId}}
+            Order N° : {{order.date }}
           </button>
         </h2>
       </div>
@@ -12,11 +12,14 @@
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body">
           <ul *ngFor="let product of order.carts">
-              <li>Nombre del producto: {{product.product.title}} cantidad: {{product.qty}} sub total: {{ product.importe}} </li>
-              
+              <li>Product name: {{product.product.title}} --- Quantity: {{product.qty}} --- sub total: {{ product.importe}} </li>
           </ul>
+          <h4>Total: $ {{order.total}}</h4>
         </div>
       </div>
-      
     </div>
   </div>
+
+<div *ngIf="!orders" class="alert alert-success" >
+  You currently have no orders associated with your account.
+</div>

@@ -6,6 +6,7 @@ import { CartService } from '../../services/cart.service';
 import { Cart } from '../../models/cart';
 import { QueryValueType } from '@angular/compiler/src/core';
 import { UserService } from '../../services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -108,7 +109,13 @@ export class HomeComponent implements OnInit {
             this.items.push(nuevoItem);
             sessionStorage.setItem("carts", JSON.stringify(this.items));
           }
-          console.log(this.items)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `the product ${response.product.title} has been added successfully`,
+            showConfirmButton: false,
+            timer: 1500
+          })
         },
         error => {
           console.log(<any>error);

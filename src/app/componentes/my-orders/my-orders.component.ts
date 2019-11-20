@@ -31,14 +31,6 @@ export class MyOrdersComponent implements OnInit {
     )
   }
 
-  calcularGranTotal(): number {
-    this.total = 0;
-    this.orders.forEach((item: Order) => {
-      item.carts.forEach(cart=>{
-        this.total += cart.importe;
-      })
-    })
-    return this.total;
-  }
+  
 
 }

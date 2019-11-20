@@ -6,5 +6,7 @@ export class Order {
         public carts: any[],
         public email: string,
         public paymentId: string,
+        public date: string,
+        public total: number
     ){}
 }
